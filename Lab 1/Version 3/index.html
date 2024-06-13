@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Przeliczanie wartości</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .result {
+            margin-top: 20px;
+        }
+        .input-group {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Przeliczanie wartości</h1>
+    <div id="inputContainer">
+        <div class="input-group">
+            <input type="text" class="number-input">
+            <button class="removeBtn">Usuń</button>
+        </div>
+        <div class="input-group">
+            <input type="text" class="number-input">
+            <button class="removeBtn">Usuń</button>
+        </div>
+        <div class="input-group">
+            <input type="text" class="number-input">
+            <button class="removeBtn">Usuń</button>
+        </div>
+    </div>
+    <button id="addBtn">Dodaj pole</button>
+    <div id="results">
+        <p id="sum">Suma: </p>
+        <p id="average">Średnia: </p>
+        <p id="min">Min: </p>
+        <p id="max">Max: </p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputContainer = document.querySelector('#inputContainer');
+            const addBtn = document.querySelector('#addBtn');
+
+            function calculateAndDisplayResults() {
+                const inputs = document.querySelectorAll('.number-input');
+                const numbers = Array.from(inputs).map(input => parseFloat(input.value) || 0);
+
+                const sum = numbers.reduce((a, b) => a + b, 0);
+                const average = sum / numbers.length;
+                const min = Math.min(...numbers);
+                const max = Math.max(...numbers);
+
+                document.querySelector('#sum').textContent = 'Suma: ' + sum;
+                document.querySelector('#average').textContent = 'Średnia: ' + average;
+                document.querySelector('#min').textContent = 'Min: ' + min;
+                document.querySelector('#max').textContent = 'Max: ' + max;
+            }
+
+            function addInputField() {
+                const div = document.createElement('div');
+                div.className = 'input-group';
+                div.innerHTML = `
+                    <input type="text" class="number-input">
+                    <button class="removeBtn">Usuń</button>
+                `;
+                inputContainer.appendChild(div);
+                div.querySelector('.number-input').addEventListener('input', calculateAndDisplayResults);
+                div.querySelector('.removeBtn').addEventListener('click', function() {
+                    inputContainer.removeChild(div);
+                    calculateAndDisplayResults();
+                });
+            }
+
+            addBtn.addEventListener('click', addInputField);
+
+            document.querySelectorAll('.number-input').forEach(input => {
+                input.addEventListener('input', calculateAndDisplayResults);
+            });
+
+            document.querySelectorAll('.removeBtn').forEach(button => {
+                button.addEventListener('click', function(event) {
+                    const inputGroup = event.target.parentElement;
+                    inputContainer.removeChild(inputGroup);
+                    calculateAndDisplayResults();
+                });
+            });
+
+            // Wywołanie funkcji na początku, aby zainicjować wartości
+            calculateAndDisplayResults();
+        });
+    </script>
+</body>
+</html>

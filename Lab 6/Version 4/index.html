@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ball in the Hole</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+    canvas {
+      border: 1px solid #000;
+      margin: 10px;
+    }
+    .results {
+      margin-left: 10px;
+      text-align: center;
+      width: 400px;
+    }
+    .box {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+    <div class="results">
+      <h2>Score: <span id="score">0/5</span></h2>
+      <h2>Time: <span id="timer">60</span>s</h2>
+      <h3>Time Records</h3>
+      <ul id="resultsList"></ul>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

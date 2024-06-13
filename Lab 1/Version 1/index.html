@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Przeliczanie wartości</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Przeliczanie wartości</h1>
+    <div>
+        <label for="num1">Liczba 1:</label>
+        <input type="text" id="num1">
+    </div>
+    <div>
+        <label for="num2">Liczba 2:</label>
+        <input type="text" id="num2">
+    </div>
+    <div>
+        <label for="num3">Liczba 3:</label>
+        <input type="text" id="num3">
+    </div>
+    <div>
+        <label for="num4">Liczba 4:</label>
+        <input type="text" id="num4">
+    </div>
+    <button id="calculateBtn">Przelicz</button>
+
+    <div class="result">
+        <p id="sum">Suma: </p>
+        <p id="average">Średnia: </p>
+        <p id="min">Min: </p>
+        <p id="max">Max: </p>
+    </div>
+
+    <script>
+        document.getElementById('calculateBtn').addEventListener('click', function() {
+            // Pobranie wartości z pól tekstowych
+            const num1 = parseFloat(document.getElementById('num1').value) || 0;
+            const num2 = parseFloat(document.getElementById('num2').value) || 0;
+            const num3 = parseFloat(document.getElementById('num3').value) || 0;
+            const num4 = parseFloat(document.getElementById('num4').value) || 0;
+            
+            // Umieszczenie wartości w tablicy
+            const numbers = [num1, num2, num3, num4];
+            
+            // Obliczenia
+            const sum = numbers.reduce((a, b) => a + b, 0);
+            const average = sum / numbers.length;
+            const min = Math.min(...numbers);
+            const max = Math.max(...numbers);
+            
+            // Wyświetlanie wyników
+            document.getElementById('sum').textContent = 'Suma: ' + sum;
+            document.getElementById('average').textContent = 'Średnia: ' + average;
+            document.getElementById('min').textContent = 'Min: ' + min;
+            document.getElementById('max').textContent = 'Max: ' + max;
+        });
+    </script>
+</body>
+</html>
