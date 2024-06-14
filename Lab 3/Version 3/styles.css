@@ -1,0 +1,33 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+.box {
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+button {
+  margin: 5px;
+}
+#instrument-buttons{
+  display: flex;
+}
+
+#instrument-buttons div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#instrument-buttons button{
+  padding: 10px;
+  display: block;
+  text-align: center;
+  min-width: 70px;
+}
+#instrument-buttons button span{
+  display: block;
+  text-align: center;
+}

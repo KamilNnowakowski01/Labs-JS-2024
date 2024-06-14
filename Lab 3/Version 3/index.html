@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drum Machine</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <div id="instrument-buttons" class="box">
+            <div><button data-sound="boom">Boom<span>A</span></button></div>
+            <div><button data-sound="clap">Clap<span>S</span></button></div>
+            <div><button data-sound="hihat">HiHat<span>D</span></button></div>
+            <div><button data-sound="kick">Kick<span>F</span></button></div>
+            <div><button data-sound="openhat">OpenHat<span>G</span></button></div>
+            <div><button data-sound="ride">Ride<span>H</span></button></div>
+            <div><button data-sound="snare">Snare<span>J</span></button></div>
+            <div><button data-sound="tink">Tink<span>K</span></button></div>
+            <div><button data-sound="tom">Tom<span>L</span></button></div>
+        </div>
+        <div id="channels" class="box">
+            <div id="channel-controls">
+                <button id="play-all">Play All</button>
+                <button id="add-channel">Add Channel</button>
+            </div>
+            <div id="channel-list">
+                <!-- Channels will be dynamically added here -->
+            </div>
+        </div>
+        <div id="record-controls" class="box">
+            <select id="channel-select">
+                <!-- Channel options will be dynamically added here -->
+            </select>
+            <button id="record">Record</button>
+            <button id="stop">Stop</button>
+            <button id="remove-channel">Delete</button>
+        </div>
+        <div id="metronome" class="box">
+            <button id="toggle-metronome">OFF Metronome</button>
+            <label for="bpm">BPM:</label>
+            <input type="number" id="bpm" value="120">
+        </div>
+    </div>
+    <script src="EnumSounds.js" type="module"></script>
+    <script src="Sound.js" type="module"></script>
+    <script src="Channel.js" type="module"></script>
+    <script src="ChannelsManager.js" type="module"></script>
+    <script src="Recorder.js" type="module"></script>
+    <script src="UIManager.js" type="module"></script>
+</body>
+</html>
